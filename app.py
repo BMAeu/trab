@@ -1,14 +1,17 @@
 from flask import Flask, render_template, request
-import mysql.connector
+from flask_mysqldb import MySQL
 
 app = Flask(__name__)
 
-mydb = mysql.connector.connect(
-host="localhost",
-user="root",
-passwd="",
-database="vodan_br_bd"
-)
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = ''
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_DB'] = 'voda_br_bd'
+#app.config['MYSQL_CURSORCLASS']
+
+mysql = MySQL(app)
+
+
 
 @app.route("/")
 def main():
@@ -36,7 +39,11 @@ def consul_quest():
 #------------------Gestao Tipo de Questao----------------------------------------
 @app.route('/consul_tipo_questao')
 def consul_tipo_questao():
-    return render_template('consul_tipo_questao.html')
+    cur = mysql.connection.cursor()
+    cur.execute('''SELECT * FROM tb_questions''')
+    resultado = cur.fetchall()
+    cur.close
+    return render_template('consul_tipo_questao.html', data = resultado)
 
 @app.route('/criar_tipo_questao')
 def criar_tipo_questao():
