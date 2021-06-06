@@ -1,0 +1,13 @@
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS `subordinarQuestao`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `subordinarQuestao` (`ID_questao_subordinada` int(10), `ID_questao_principal` int(10))
+BEGIN
+#========================================================================================================================
+#== Procedure para subordinar uma questao a outra
+#========================================================================================================================
+	UPDATE tb_Questions
+	SET subordinateTo = ID_questao_principal
+	WHERE questionID = ID_questao_subordinada;
+
+END$$
