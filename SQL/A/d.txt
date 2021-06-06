@@ -1,0 +1,27 @@
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS `conslutaQuestionario`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `conslutaQuestionario` (`versao_consulta` int(10), `id_consulta` int(10))
+BEGIN
+#========================================================================================================================
+#== Procedure para consultar um questionario
+#========================================================================================================================
+	SELECT tb_crfforms.description AS modulo, questao, agrupamento, tipo_questao, nome_lista, lista_respostas
+	FROM tb_questionnaire
+	LEFT JOIN 
+	(tb_crfforms
+	LEFT JOIN 
+	(tb_questiongroupform
+	LEFT JOIN
+	((SELECT tb_questions.description AS questao, tb_questions.questionID, tb_questiongroup.description AS agrupamento, tb_questiontype.description AS tipo_questao, tb_questions.listTypeID
+	FROM tb_questiongroup RIGHT JOIN (tb_questions LEFT JOIN tb_questiontype ON tb_questions.questionTypeID = tb_questiontype.questionTypeID) ON tb_questions.questionGroupID = tb_questiongroup.questionGroupID) AS tabelaquestao
+	LEFT JOIN 
+	(SELECT tb_listtype.listTypeID, tb_listtype.description AS nome_lista,tb_listofvalues.description AS lista_respostas 
+	FROM tb_listofvalues LEFT JOIN tb_listtype 
+	ON tb_listofvalues.listTypeID = tb_listtype.listTypeID) AS tabelatipo ON tabelatipo.listTypeID = tabelaquestao.listTypeID)
+	ON tb_questiongroupform.questionID = tabelaquestao.questionID)
+	ON tb_crfforms.crfFormsID = tb_questiongroupform.crfFormsID)
+	ON tb_questionnaire.questionnaireID = tb_crfforms.questionnaireID
+	WHERE tb_questionnaire.versao = versao_consulta AND tb_questionnaire.questionnaireID = id_consulta
+
+END$$

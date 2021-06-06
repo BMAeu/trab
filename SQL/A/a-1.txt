@@ -1,0 +1,15 @@
+DELIMITER $$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `novo_formulario`(`description` Varchar(255))
+BEGIN
+#========================================================================================================================
+#== Cadastrar um novo questionário
+#========================================================================================================================
+	declare new_tb_questionnaire integer;
+  
+	select count(*)+1 into new_tb_questionnaire from tb_questionnaire;
+
+	INSERT INTO tb_questionnaire (questionnaireID, description) VALUES
+  		(new_tb_questionnaire,	description);
+
+END$$
