@@ -1,0 +1,12 @@
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS `alterar_listofvalues`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `alterar_listofvalues`(`list_type_id` INTEGER, `list_values_id` INTEGER, `new_list_value_description` Varchar(255)) BEGIN
+#========================================================================================================================
+#== Em uma lista existente, alterar itens
+#========================================================================================================================
+	UPDATE  tb_listofvalues
+	SET tb_listofvalues.description = new_list_value_description
+	WHERE listOfValuesID=list_values_id and listTypeID=list_type_id;
+
+END$$

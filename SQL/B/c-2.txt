@@ -1,0 +1,15 @@
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS `inserir_listofvalues`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `inserir_listofvalues`(`list_type_id` INTEGER, `new_list_value_description` Varchar(255)) BEGIN
+#========================================================================================================================
+#== Em uma lista existente de Respostas Padronizadas, inserir novos itens;
+#========================================================================================================================
+	declare new_list_value_id integer;
+  
+	select count(*)+1 into new_list_value_id from tb_listofvalues;
+
+	INSERT INTO tb_listofvalues (listOfValuesID, listTypeID, description) VALUES
+  		(new_list_value_id, list_type_id, new_list_value_description);
+
+END$$
