@@ -1,4 +1,6 @@
 # trab
 so mudar o:
+
 passwd=""
-pra senha do root no seu mysql
+
+que fica no começo do app.py pra senha do root no seu mysql
