@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <title>Novo Questionario</title>
+    <style>
+	table, th, td {
+	border: 1px solid black;
+	}
+    </style>
+</head>
+
+<body>
+        <h1>Criar Questão</h1>
+         
+         <form action="/question2">
+             Texto da questão a ser criada <input type='text' name='new_question_text'><br>
+             ID Tipo da questão a ser criada <input type='text' name='new_question_typeID'><br>
+             ID Lista de resposta, caso a questão tenha respostas padronizadas <input type='text' name='new_question_list_typeID'><br>
+             ID Agrupamento <input type='text' name='new_question_groupID'><br>
+             <input type='submit' value='Enviar'>
+         </form>
+         
+         <form action="/questGroup">
+             Consulte os agrupamentos existentes ou crie um novo<input type='submit' value='Criar'>
+         </form>
+        
+        
+        <h3>Consulte os IDs dos Tipos de Questoes disponiveis na tabela abaixo para botar como input acima</h3>
+  <table style="width:100%">
+   <tr>
+     <th>ID</th>
+     <th>Tipo de Questao</th>
+   </tr>
+
+    {% for item in data[0] %}
+    <tr>
+        <td>{{item[0]}}</td>
+        <td>{{item[1]}}</td>
+    </tr>
+    {% endfor %}
+
+ </table>
+ 
+        <h3>Consulte os IDs das Listas de Resposta disponiveis na tabela abaixo para botar como input acima</h3>
+   <table style="width:100%">
+   <tr>
+     <th>ID</th>
+     <th>Lista</th>
+   </tr>
+
+    {% for item in data[1] %}
+    <tr>
+        <td>{{item[0]}}</td>
+        <td>{{item[1]}}</td>
+    </tr>
+    {% endfor %}
+
+ </table>
+ 
+         <h3>Consulte os Agrupamentos disponiveis na tabela abaixo para botar como input acima</h3>
+   <table style="width:100%">
+   <tr>
+     <th>ID</th>
+     <th>Lista</th>
+     <th>Comentario</th>
+   </tr>
+
+    {% for item in data[2] %}
+    <tr>
+        <td>{{item[0]}}</td>
+        <td>{{item[1]}}</td>
+        <td>{{item[3]}}</td>
+    </tr>
+    {% endfor %}
+
+ </table>
+ 
+ </body>
+ 
+</html>

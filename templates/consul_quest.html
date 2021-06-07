@@ -3,9 +3,40 @@
  
 <head>
     <title>Consultar Questionario</title>
+    <style>
+	table, th, td {
+	border: 1px solid black;
+	}
+    </style>
 </head>
- 
+
 <body>
-</body>
+        <h1>Consultar Questionario</h1>
+        
+          <form action="/">
+            <input type='submit' value='Voltar'>
+         </form>
+         
+         <form action="/consul_quest2">
+             ID do questionario a ser consultado <input type='text' name='id_consulta'><br>
+             <input type='submit' value='Enviar'>
+         </form>
+        
+        <h3>Consulte os IDs na tabela abaixo para botar como input acima</h3>
+  <table style="width:100%">
+   <tr>
+     <th>ID do Questionario</th>
+     <th>Descricao</th>
+   </tr>
+
+    {% for item in data %}
+    <tr>
+        <td>{{item[0]}}</td>
+        <td>{{item[1]}}</td>
+    </tr>
+    {% endfor %}
+
+ </table>
+ </body>
  
 </html>

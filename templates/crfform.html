@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <title>Novo Questionario</title>
+    <style>
+	table, th, td {
+	border: 1px solid black;
+	}
+    </style>
+</head>
+
+<body>
+        <h1>Novo Modulo</h1>        
+         
+         <form action="/crfform2">
+             Descricao do Modulo a ser criado <input type='text' name='description_mod'><br>
+             ID do Questionario <input type='text' name='nv_ID'><br>
+             <input type='submit' value='Enviar'>
+         </form>
+ 
+         <h3>Consulte os Questionarios existentes</h3>
+  <table style="width:100%">
+   <tr>
+     <th>ID do Questionario</th>
+     <th>Descricao</th>
+   </tr>
+
+    {% for item in data %}
+    <tr>
+        <td>{{item[0]}}</td>
+        <td>{{item[1]}}</td>
+    </tr>
+    {% endfor %}
+
+ </table>
+        
+ </body>
+ 
+</html>

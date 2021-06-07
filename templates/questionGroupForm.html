@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <title>Novo Questionario</title>
+    <style>
+	table, th, td {
+	border: 1px solid black;
+	}
+    </style>
+</head>
+
+<body>
+        <h1>questionGroupForm</h1>
+         
+         <form action="/questionGroupForm2">
+             ID da Questao <input type='text' name='question_id'><br>
+             Ordem da questao <input type='text' name='question_order'><br>
+             <input type='submit' value='Enviar'>
+         </form>
+         
+         <form action="/question">
+             Consulte as questoes existentes ou crie uma nova<input type='submit' value='Criar'>
+         </form>
+        
+        
+        <h3>Consulte as Questoes existentes</h3>
+  <table style="width:100%">
+   <tr>
+     <th>ID</th>
+     <th>Questao</th>
+   </tr>
+
+    {% for item in data %}
+    <tr>
+        <td>{{item[0]}}</td>
+        <td>{{item[1]}}</td>
+    </tr>
+    {% endfor %}
+
+ </table>
+
+ </body>
+ 
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <title>Consultar Questionario</title>
+    <style>
+	table, th, td {
+	border: 1px solid black;
+	}
+    </style>
+</head>
+
+<body>        
+          <form action="/">
+            <input type='submit' value='Voltar ao inicio'>
+         </form>
+         
+         <form action="/del_quest2">
+             <input type='submit' value='Consultar outros questionarios'>
+         </form>
+
+  <table style="width:100%">
+   <tr>
+     <th>Modulo</th>
+     <th>Questao</th>
+     <th>Agrupamento</th>
+     <th>Tipo de Questao</th>
+     <th>Nome da Lista</th>
+     <th>Lista de Respostas</th>
+   </tr>
+
+    {% for item in data %}
+    <tr>
+        <td>{{item[0]}}</td>
+        <td>{{item[1]}}</td>
+        <td>{{item[2]}}</td>
+        <td>{{item[3]}}</td>
+        <td>{{item[4]}}</td>
+        <td>{{item[5]}}</td>
+    </tr>
+    {% endfor %}
+
+ </table>
+        
+ </body>
+ 
+</html>

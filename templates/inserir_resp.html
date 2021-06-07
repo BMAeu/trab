@@ -2,10 +2,43 @@
 <html lang="en">
  
 <head>
-    <title>Inserir Resposta</title>
+    <title>Inserir Nova Resposta</title>
+    <style>
+	table, th, td {
+	border: 1px solid black;
+	}
+    </style>
 </head>
  
 <body>
+
+        <h1>Inserir Nova Resposta em Lista</h1>
+        
+          <form action="/">
+            <input type='submit' value='Voltar'>
+         </form>
+         
+         <form action="/inserir_resp2">
+             ID da lista onde adicionar<input type='text' name='list_type_id'><br>
+             Resposta a ser criada<input type='text' name='new_list_value_description'><br>
+             <input type='submit' value='Enviar'>
+         </form>
+        
+        <h3>Consulte abaixo os IDs das listas ja existentes</h3>
+  <table style="width:100%">
+   <tr>
+     <th>ID da Lista</th>
+     <th>Descricao</th>
+   </tr>
+
+    {% for item in data %}
+    <tr>
+        <td>{{item[0]}}</td>
+        <td>{{item[1]}}</td>
+    </tr>
+    {% endfor %}
+
+ </table>
 </body>
  
 </html>

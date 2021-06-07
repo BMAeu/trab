@@ -1,11 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
- 
+
 <head>
     <title>Consultar Respostas Padronizadas</title>
+    <style>
+	table, th, td {
+	border: 1px solid black;
+	}
+    </style>
 </head>
- 
+
 <body>
+          <form action="/">
+            <input type='submit' value='Voltar'>
+         </form>
+         
+  <table style="width:100%">
+   <tr>
+     <th>Listas</th>
+     <th>Respostas</th>
+   </tr>
+
+    {% for item in data %}
+    <tr>
+        <td>{{item[0]}}</td>
+        <td>{{item[1]}}</td>
+    </tr>
+    {% endfor %}
+
+ </table>
+
 </body>
- 
+
 </html>

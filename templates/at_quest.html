@@ -3,9 +3,40 @@
  
 <head>
     <title>Atualizar Questionario</title>
+    <style>
+	table, th, td {
+	border: 1px solid black;
+	}
+    </style>
 </head>
- 
+
 <body>
-</body>
+        <h1>Atualizar Questionario</h1>
+        
+          <form action="/">
+            <input type='submit' value='Voltar'>
+         </form>
+         
+         <form action="/nv_quest2">
+             Questionario atualizado(eg.: 'quest' vira 'quest2') <input type='text' name='description'><br>
+             <input type='submit' value='Enviar'>
+         </form>
+        
+        <h3>Consulte os Questionarios existentes</h3>
+  <table style="width:100%">
+   <tr>
+     <th>ID do Questionario</th>
+     <th>Descricao</th>
+   </tr>
+
+    {% for item in data %}
+    <tr>
+        <td>{{item[0]}}</td>
+        <td>{{item[1]}}</td>
+    </tr>
+    {% endfor %}
+
+ </table>
+ </body>
  
 </html>

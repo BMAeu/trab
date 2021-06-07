@@ -3,23 +3,43 @@
  
 <head>
     <title>Subordinar Questão</title>
+    <style>
+	table, th, td {
+	border: 1px solid black;
+	}
+    </style>
 </head>
- 
+
 <body>
-    <form>
         <h1>Subordinar Questão</h1>
+        
+          <form action="/">
+            <input type='submit' value='Voltar'>
+         </form>
+         
+         <form action="/subord_questao2">
+             ID da questão a ser subordinada <input type='text' name='ID_questao_subordinada'><br>
+             ID da questão principal <input type='text' name='ID_questao_principal'><br>
+             <input type='submit' value='Enviar'>
+         </form>
+        
+        <h3>Consulte os IDs na tabela abaixo para botar como input acima</h3>
+  <table style="width:100%">
+   <tr>
+     <th>ID da Questao</th>
+     <th>Descricao</th>
+     <th>Subordinada a Questao com ID</th>
+   </tr>
 
-        <form method="POST">
-            <label for="ID_questao_subordinada">ID da questão para subordinar</label>
-            <input name="ID_questao_subordinada">
-            <input type="submit">
-        </form>
+    {% for item in data %}
+    <tr>
+        <td>{{item[0]}}</td>
+        <td>{{item[1]}}</td>
+        <td>{{item[2]}}</td>
+    </tr>
+    {% endfor %}
 
-        <form method="POST">
-            <label for="ID_questao_principal">ID da questão principal</label>
-            <input name="ID_questao_principal">
-            <input type="submit">
-        </form>
+ </table>
  </body>
  
 </html>

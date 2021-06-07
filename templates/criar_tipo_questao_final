@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <title>Criar Tipo de Questão</title>
+</head>
+
+<body>
+        <h1>Pronto, o tipo de questão: '{{data[0][0]}}' foi criado!</h1>
+        
+          <form action="/">
+            <input type='submit' value='Voltar ao inicio'>
+         </form>
+         
+         <form action="/criar_tipo_questao">
+             <input type='submit' value='Criar mais tipos'>
+         </form>
+        
+ </body>
+ 
+</html>
